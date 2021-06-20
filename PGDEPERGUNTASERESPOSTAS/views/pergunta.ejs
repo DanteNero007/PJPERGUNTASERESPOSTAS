@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css2/styles.css">
+
+
+    <title>Pergunta</title>
+</head>
+
+<body>
+
+    <%- include ('partials/navBar') %>
+    
+   
+    <div class="container">
+        <h1>Respostas</h1>
+        <hr>
+       <h2><%= perguntas.titulo%> ?</h1> 
+        <br>
+       <h3><%= perguntas.descricao%></h3>
+        <hr>
+        <form method="POST" action='/responder'>
+            <h3>Responda</h3>
+            <label> Resposta:</label>
+            <textarea placeholder='digite sua resposta'
+            class='form-control' name='corpo'></textarea>
+            <br>
+            <input type="hidden" name='pergunta' value='<%= perguntas.id%>'>
+            <button type= 'submit' class='btn btn-primary'>
+                Responder
+            </button>
+            
+        </form>
+        <% respostas.forEach(resp =>{%>
+            <br>
+        <div class="card">
+            <div class='card-body'>
+                <%= resp.corpo %>
+            </div>
+        </div>
+        <br>
+        
+        <%})%>
+
+    </div>
+
+
+</body>
+
+         <%- include ('partials/footer') %>
+
+</html>
